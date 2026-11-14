@@ -103,6 +103,8 @@ p{margin:0}
 .hero .cta .btn{min-height:60px;font-size:1.1rem;padding:0 30px}
 .ticks{display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:600;font-size:.92rem;color:var(--muted)}
 .ticks span{display:flex;align-items:center;gap:7px}
+.hero-loc{display:flex;align-items:center;gap:8px;margin-top:18px;font-size:.92rem;font-weight:600;color:var(--muted);max-width:44ch}
+.hero-loc svg{width:20px;height:20px;flex:none;stroke:var(--amarelo);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ticks span::before{content:"";width:14px;height:14px;background:var(--ok);clip-path:polygon(14% 52%,26% 40%,42% 56%,76% 18%,88% 30%,42% 80%)}
 .countdown{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap;align-items:center}
 .countdown .lbl{font:600 .74rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
@@ -170,7 +172,7 @@ form.card{max-width:640px;margin-inline:auto;background:var(--amarelo);color:var
 .tgroup:first-child{margin-top:0}
 .taps.chips{display:flex;flex-wrap:wrap;gap:8px}
 .taps.chips .tap{min-height:46px;border-radius:999px;padding:8px 16px;font-size:.98rem}
-.taps.chips .tap.wide{flex-basis:100%;justify-content:center;text-align:center;border-radius:14px;margin-top:8px}
+.taps.chips .tap.wide{flex-basis:100%;justify-content:center;text-align:center;border-radius:14px;margin-bottom:2px}
 .field{display:grid;gap:6px}
 .field label{font-weight:800;font-size:.95rem}
 input[type=text],input[type=tel]{width:100%;min-height:56px;border-radius:12px;border:2px solid transparent;background:var(--gelo);color:var(--on-amarelo);font:600 1.08rem var(--f-body);padding:0 14px}
@@ -191,6 +193,8 @@ input:focus{outline:none;border-color:var(--on-amarelo)}
 .ok-box .stepper i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 .8rem var(--f-mono);font-style:normal;background:rgba(31,31,30,.12)}
 .ok-box .stepper .done i{background:var(--on-amarelo);color:var(--amarelo)}
 .ok-box .stepper .now i{background:var(--gelo)}
+.ok-box .recap{margin-top:-4px}
+.ok-box .fback{justify-self:start}
 .ok-box .warn{background:rgba(31,31,30,.1);border-radius:10px;padding:12px 14px;font-size:.88rem}
 .ok-box a:not(.btn){color:var(--on-amarelo);font-weight:700}
 
@@ -284,7 +288,7 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MobilePhoneStore","name":"Nex Phone","url":"https://nexphonecelulares.com.br/","telephone":"+55 19 99757-3728","email":"nexxphone@gmail.com","image":"https://nexphonecelulares.com.br/og-image.jpg","logo":"https://nexphonecelulares.com.br/icon-512.png","slogan":"Conectando você ao futuro","description":"Celulares Redmi, Poco, Realme, Samsung, Motorola, Hotway e iPhone no boleto sem cartão (sujeito a análise de crédito). Pré-análise grátis pelo WhatsApp.","address":{"@type":"PostalAddress","streetAddress":"Av. John Boyd Dunlop, 3900 – Shopping Parque das Bandeiras, Piso L3, Loja 3073","addressLocality":"Campinas","addressRegion":"SP","postalCode":"13060-904","addressCountry":"BR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}],"paymentAccepted":"Débito, Crédito, Pix, Aproximação (NFC), Dinheiro, Boleto parcelado","areaServed":["Campinas","Hortolândia","Sumaré","Monte Mor"],"sameAs":["https://www.instagram.com/nexfonecampinas/"]}
+{"@context":"https://schema.org","@type":"MobilePhoneStore","name":"Nex Phone","url":"https://nexphonecelulares.com.br/","telephone":"+55 19 99757-3728","email":"nexxphone@gmail.com","image":"https://nexphonecelulares.com.br/og-image.jpg","logo":"https://nexphonecelulares.com.br/icon-512.png","slogan":"Conectando você ao futuro","description":"Celulares Redmi, Poco, Realme, Samsung, Motorola, Hotway e iPhone no boleto sem cartão (sujeito a análise de crédito). Pré-análise grátis pelo WhatsApp.","address":{"@type":"PostalAddress","streetAddress":"Av. John Boyd Dunlop, 3900 – Shopping Parque das Bandeiras, Piso L3, Loja 3073","addressLocality":"Campinas","addressRegion":"SP","postalCode":"13060-904","addressCountry":"BR"},"paymentAccepted":"Débito, Crédito, Pix, Aproximação (NFC), Dinheiro, Boleto parcelado","areaServed":["Campinas","Hortolândia","Sumaré","Monte Mor"],"sameAs":["https://www.instagram.com/nexfonecampinas/"]}
 </script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -320,7 +324,7 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
     <section class="ap-top" aria-labelledby="apTitle">
       <span class="ap-badge"><i></i>Pré-análise aprovada</span>
       <h2 id="apTitle" class="ap-h">Seu cadastro foi <span class="hl">pré-aprovado.</span></h2>
-      <p class="sub">Agora é só vir na loja com seu documento e sair com o celular na mão.</p>
+      <p class="sub" id="apSub">Na inauguração, é só vir na loja com seu documento e sair com o celular na mão.</p>
       <span class="ap-model" id="apModel" hidden></span>
       <div class="ap-cta">
         <a class="btn btn-go" id="apWa" href="#ap-lista" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Confirmar minha visita</a>
@@ -331,7 +335,7 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
     <section class="ap-list" id="ap-lista" aria-label="O que fazer agora">
       <div class="ap-row"><svg aria-hidden="true"><use href="#i-doc"/></svg><div><b>Leve</b><ul id="apDocs"></ul></div></div>
       <div class="ap-row"><svg aria-hidden="true"><use href="#i-pin"/></svg><div><b>Onde</b><p>Shopping Parque das Bandeiras · Piso L3, Loja 3073, ao lado da Magalu</p></div></div>
-      <div class="ap-row"><svg aria-hidden="true"><use href="#i-clock"/></svg><div><b>Quando</b><p id="apWhen">A partir da inauguração, em novembro.</p><p><a id="apCal" href="#" target="_blank" rel="noopener" hidden>Salvar na agenda</a></p></div></div>
+      <div class="ap-row"><svg aria-hidden="true"><use href="#i-clock"/></svg><div><b>Quando</b><p id="apWhen">Assim que a loja inaugurar. A gente te avisa a data pelo WhatsApp.</p><p><a id="apCal" href="#" target="_blank" rel="noopener" hidden>Salvar na agenda</a></p></div></div>
       <p class="note" id="apValid">Pré-aprovação sujeita à confirmação dos documentos na loja.</p>
       <div class="ap-vip"><div><b>+ R$ 50 OFF</b><p>Siga @nexfonecampinas até a véspera da inauguração. 1 cupom por CPF, não cumulativo.</p></div><a class="btn btn-line" href="https://www.instagram.com/nexfonecampinas/" target="_blank" rel="noopener">Seguir</a></div>
       <p class="note" style="margin-block:22px 48px"><a href="#inicio">Conhecer a Nex Phone</a></p>
@@ -344,13 +348,14 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
   <section class="hero" aria-labelledby="h1">
     <div class="wrap">
       <div>
-        <span class="chip"><span class="dot"></span><span id="heroChip">Inauguração em novembro</span></span>
+        <span class="chip"><span class="dot"></span><span id="heroChip">Inauguração em breve</span></span>
         <h1 id="h1">Celular no boleto, <span class="hl">sem cartão de crédito.</span></h1>
-        <p class="sub">Descubra pelo WhatsApp se você é <b class="nw">pré-aprovado</b>. Depois é só vir buscar.</p>
+        <p class="sub" id="heroSub">Descubra pelo WhatsApp se você é <b class="nw">pré-aprovado</b> e saiba a data da inauguração antes de todo mundo.</p>
         <div class="cta">
           <a class="btn btn-go" href="#lista" data-cta="hero">Fazer minha pré-análise grátis</a>
-          <div class="ticks"><span>Grátis</span><span>30 segundos</span><span>Sem compromisso</span></div>
+          <div class="ticks"><span>Grátis</span><span>30 segundos</span><span>Negativado pode tentar</span></div>
         </div>
+        <p class="hero-loc"><svg aria-hidden="true"><use href="#i-pin"/></svg>Loja física no Shopping Parque das Bandeiras, ao lado da Magalu</p>
         <div class="countdown" id="countdown" hidden></div>
       </div>
       <div class="phone" aria-hidden="true">
@@ -374,9 +379,9 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
     <div class="wrap">
       <div class="head"><h2 id="h-como">Simples assim</h2></div>
       <div class="steps">
-        <div class="step"><div class="node"><b>1</b></div><h3>Cadastro rápido</h3><p>Escolha o celular e deixe seu WhatsApp.</p></div>
+        <div class="step"><div class="node"><b>1</b></div><h3>Escolha o celular</h3><p>Dois toques aqui no site.</p></div>
         <div class="step"><div class="node"><b>2</b></div><h3>Pré-análise grátis</h3><p>A gente consulta pelo WhatsApp.</p></div>
-        <div class="step"><div class="node"><b>3</b></div><h3><span class="nw">Pré-aprovado?</span> Vem buscar</h3><p>Traga seu documento e leve o celular.</p></div>
+        <div class="step"><div class="node"><b>3</b></div><h3><span class="nw">Pré-aprovado?</span> Vem buscar</h3><p id="step3">Na inauguração, com ofertas nunca vistas no mercado.</p></div>
       </div>
       <p class="fine">Sujeito a análise de crédito. A compra é confirmada na loja.</p>
     </div>
@@ -387,9 +392,9 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
       <form class="card" id="leadForm" novalidate aria-labelledby="ftitle">
         <div id="funnel" style="display:grid;gap:16px">
           <div class="fbig">Faça sua <span class="nw">pré-análise</span> grátis</div>
-          <div class="fkicker"><button type="button" class="fback" id="fback" hidden>‹ Voltar</button><span id="fcount">Passo 1 de 4</span></div>
+          <div class="fkicker"><button type="button" class="fback" id="fback" hidden>‹ Voltar</button><span id="fcount">Passo 1 de 3</span></div>
           <div class="fprog" aria-hidden="true"><i id="fbar"></i></div>
-          <h3 class="ftitle" id="ftitle" tabindex="-1">Qual celular você quer?</h3>
+          <h3 class="ftitle" id="ftitle" tabindex="-1">Como você quer pagar?</h3>
           <div class="taps" id="ftaps" role="group" aria-labelledby="ftitle"></div>
           <div id="fcontact" hidden style="display:grid;gap:14px">
             <div class="recap" id="recap" aria-label="Suas escolhas"></div>
@@ -450,6 +455,7 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
           <div class="btns"><a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Shopping+Parque+das+Bandeiras+Campinas" target="_blank" rel="noopener">Abrir no Google Maps</a></div>
         </div>
         <div class="box">
+          <p class="note" id="hoursNote">Horário a partir da inauguração</p>
           <table class="hours">
             <tr><td>Seg. a sáb.</td><td>10h às 22h</td></tr>
             <tr><td>Domingo</td><td>12h às 20h</td></tr>
@@ -463,9 +469,11 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
     <div class="wrap">
       <div class="head"><h2 id="h-faq">Dúvidas</h2></div>
       <div class="faq">
+        <details><summary>Quando a loja abre?</summary><div><p id="faqAbre">Em breve, no Shopping Parque das Bandeiras. Quem faz a pré-análise fica sabendo a data primeiro, pelo WhatsApp.</p></div></details>
+        <details><summary>Quanto custam os celulares?</summary><div><p id="faqPreco">Os preços serão revelados na loja, no dia da inauguração, com ofertas nunca vistas no mercado.</p></div></details>
         <details><summary>A pré-análise é grátis mesmo?</summary><div><p>Sim, e sem compromisso. A gente nunca pede dinheiro pra analisar ou "liberar" crédito.</p></div></details>
         <details><summary>Pré-aprovado já é aprovado?</summary><div><p>É o sinal verde da financeira. A compra é confirmada na loja, com seu documento.</p><p id="faqPrazo"></p></div></details>
-        <details><summary>Quem tem nome sujo consegue?</summary><div><p>Depende da financeira, e a gente trabalha com mais de uma. Faça a pré-análise e descubra.</p></div></details>
+        <details><summary>Quem tem nome sujo consegue?</summary><div><p>Cada caso é analisado pelas financeiras parceiras, e não depende de cartão de crédito. A pré-análise é grátis: faça e descubra.</p></div></details>
         <details><summary>O que eu levo na loja?</summary><div><ul id="docsList"></ul></div></details>
       </div>
     </div>
@@ -492,7 +500,7 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
         <h5>Quem cuida dos seus dados</h5>
         <p><span data-cfg="razaoSocial"></span>, CNPJ <span data-cfg="cnpj"></span>, nome fantasia Nex Phone, Av. John Boyd Dunlop, 3900, Shopping Parque das Bandeiras, Piso L3, Loja 3073, Campinas-SP. Contato para assuntos de privacidade: <span data-cfg="emailPrivacidade"></span>.</p>
         <h5>Quais dados coletamos neste site</h5>
-        <ul><li>Nome e WhatsApp.</li><li>Modelo de interesse, forma de pagamento preferida e bairro ou cidade.</li><li>Origem da visita (por exemplo, o anúncio que trouxe você), para saber quais campanhas funcionam.</li></ul>
+        <ul><li>Nome e WhatsApp, quando você preenche o cadastro ou chama a loja no WhatsApp.</li><li>Modelo de interesse e forma de pagamento preferida.</li><li>Origem da visita (por exemplo, o anúncio que trouxe você), para saber quais campanhas funcionam.</li></ul>
         <p>Não pedimos CPF, endereço ou dados bancários neste site.</p>
         <h5>Pré-análise de crédito</h5>
         <p>Se você pedir a pré-análise, pedimos pelo WhatsApp os dados que a financeira exige para a consulta (como CPF e data de nascimento). Eles são usados só para essa consulta, enviados à financeira escolhida e não são registrados no nosso cadastro de contatos. Base legal: procedimentos preliminares a um contrato a seu pedido (art. 7º, V, da LGPD) e proteção do crédito (art. 7º, X).</p>
@@ -528,7 +536,8 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
 const NEX = {
   whatsapp: "5519997573728",
   leadEndpoint: "",        // URL do App da Web do Google Apps Script (planilha de leads)
-  inauguracao: "2026-11-15T12:00:00-03:00",   // domingo e feriado: confirmar o horário de abertura do shopping
+  inauguracao: "",         // nova data e hora, quando for definida. Ex.: "2026-11-20T10:00:00-03:00". Vazio = "Inauguração em breve"
+  lojaAberta: false,       // mudar para true só no dia em que a loja abrir de verdade (mostra horário e "Loja aberta")
   parcelasBoleto: "",      // ex.: "18x" (confirmar com as financeiras)
   validadePreAprovacao: "Consultar com vendedor",
   documentos: [            // o que levar na loja (confirmar com as financeiras)
@@ -540,7 +549,7 @@ const NEX = {
   razaoSocial: "NEX PHONE LTDA",
   emailPrivacidade: "nexxphone@gmail.com",
   metaPixelId: "",         // ID do Pixel da Meta (só carrega se o visitante aceitar cookies)
-  versaoTermo: "07/11/2026"
+  versaoTermo: "14/11/2026"
 };
 /* ======================================================================= */
 
@@ -575,38 +584,45 @@ const NEX = {
     const a = document.createElement("a"); a.href = waLink("Oi! Vim pelo site da Nex Phone."); a.target="_blank"; a.rel="noopener"; a.textContent = "WhatsApp " + fmt;
     li.appendChild(a); $("#contactList").prepend(li);
   }
-  document.addEventListener("click",e=>{ const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]'); if(a) track("Contact"); });
+  document.addEventListener("click",e=>{ const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]'); if(a){ track("Contact"); if(a.dataset.lead) track("Lead",{content_name:a.dataset.lead}); } });
 
-  /* --- Datas: contagem regressiva e agenda --- */
+  /* --- Inauguração: "em breve" (padrão do HTML), com data marcada, ou loja aberta --- */
   const alvo = NEX.inauguracao ? new Date(NEX.inauguracao) : null;
-  const antes = alvo ? alvo > new Date() : true;
+  const aberta = NEX.lojaAberta === true;
+  const temData = !aberta && !!alvo && !isNaN(alvo) && alvo > new Date();
+  const HORARIO = "Segunda a sábado das 10h às 22h, domingo das 12h às 20h.";
   const renderCountdown = (el, label)=>{
-    if(!alvo) return;
-    const ms = alvo - new Date();
+    const ms = temData ? alvo - new Date() : 0;
     if(ms <= 0){ el.hidden = true; return; }
     const d=Math.floor(ms/864e5), h=Math.floor(ms/36e5)%24, m=Math.floor(ms/6e4)%60;
     el.innerHTML = (label ? '<span class="lbl">'+label+'</span>' : '') + "<div><b>"+d+"</b><small>dias</small></div><div><b>"+String(h).padStart(2,"0")+"</b><small>horas</small></div><div><b>"+String(m).padStart(2,"0")+"</b><small>min</small></div>";
     el.hidden = false;
   };
-  if(alvo){
+  if(aberta){
+    $("#heroChip").textContent = "Loja aberta";
+    $("#heroSub").innerHTML = 'Descubra pelo WhatsApp se você é <b class="nw">pré-aprovado</b>. Depois é só vir buscar.';
+    $("#step3").textContent = "Traga seu documento e leve o celular.";
+    $("#apSub").textContent = "Agora é só vir na loja com seu documento e sair com o celular na mão.";
+    $("#apWhen").textContent = HORARIO;
+    $("#hoursNote").hidden = true;
+    $("#faqAbre").textContent = "Já estamos abertos! " + HORARIO;
+    $("#faqPreco").textContent = "Chame a gente no WhatsApp ou venha na loja: a equipe passa os preços e as condições.";
+  } else if(temData){
     const dataTxt = alvo.toLocaleDateString("pt-BR",{day:"numeric",month:"long"});
-    const horaTxt = alvo.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
-    $("#heroChip").textContent = antes ? "Inauguração " + dataTxt : "Loja aberta";
-    if(antes){
-      $("#apWhen").textContent = "A partir da inauguração, dia " + dataTxt + ", às " + horaTxt + ".";
-      const fmtG = dt=>dt.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
-      const fim = new Date(alvo.getTime()+2*36e5);
-      const cal = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Buscar meu celular na Nex Phone") +
-        "&dates=" + fmtG(alvo) + "/" + fmtG(fim) + "&details=" + encodeURIComponent("Levar: " + NEX.documentos.join(", ") + ".") +
-        "&location=" + encodeURIComponent("Shopping Parque das Bandeiras, Piso L3, Loja 3073, Campinas-SP");
-      const c = $("#apCal"); c.href = cal; c.hidden = false;
-    } else {
-      $("#apWhen").textContent = "Segunda a sábado das 10h às 22h, domingo das 12h às 20h.";
-    }
+    const horaTxt = alvo.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}).replace(":00","h").replace(":","h");
+    $("#heroChip").textContent = "Inauguração " + dataTxt;
+    $("#heroSub").innerHTML = 'Descubra pelo WhatsApp se você é <b class="nw">pré-aprovado</b>. Na inauguração é só vir buscar.';
+    $("#apWhen").textContent = "A partir da inauguração, dia " + dataTxt + ", às " + horaTxt + ".";
+    $("#faqAbre").textContent = "Dia " + dataTxt + ", às " + horaTxt + ", no Shopping Parque das Bandeiras.";
+    const fmtG = dt=>dt.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
+    const fim = new Date(alvo.getTime()+2*36e5);
+    const c = $("#apCal");
+    c.href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Buscar meu celular na Nex Phone") +
+      "&dates=" + fmtG(alvo) + "/" + fmtG(fim) + "&details=" + encodeURIComponent("Levar: " + NEX.documentos.join(", ") + ".") +
+      "&location=" + encodeURIComponent("Shopping Parque das Bandeiras, Piso L3, Loja 3073, Campinas-SP");
+    c.hidden = false;
     const tick = ()=>{ renderCountdown($("#countdown"), "Faltam"); renderCountdown($("#apCountdown"), "Inauguração em"); };
     tick(); setInterval(tick, 30000);
-  } else {
-    $("#apWhen").textContent = "A partir da inauguração, em novembro. Seg. a sáb. 10h às 22h, dom. 12h às 20h.";
   }
 
   /* --- Rede de circuito na tela do celular --- */
@@ -634,32 +650,67 @@ const NEX = {
     document.addEventListener("visibilitychange",()=>{ if(reduce) return; if(document.hidden){ cancelAnimationFrame(raf); raf=null; } else if(!raf){ raf=requestAnimationFrame(step); } });
   }
 
-  /* --- Formulário em 4 passos --- */
+  /* --- Formulário: 2 toques e WhatsApp. Com a planilha ligada (leadEndpoint), entra o passo de contato antes do WhatsApp --- */
   const OPC = {
+    pagamento:{t:"Como você quer pagar?", o:[["Boleto parcelado","Boleto parcelado","Sem cartão de crédito"],["Cartão de crédito","Cartão de crédito",""],["À vista ou Pix","À vista ou Pix",""]], one:true},
     interesse:{t:"Qual celular você quer?", chips:true, o:[
+      ["Ainda não sei","Ainda não sei, me ajuda a escolher","","wide"],
       ["#","Redmi e Poco"],["Redmi A5","Redmi A5"],["Redmi A7 Pro","Redmi A7 Pro"],["Redmi 17","Redmi 17"],["Redmi Note 15","Redmi Note 15"],["Poco C71","Poco C71"],["Poco C81","Poco C81"],["Poco C85","Poco C85"],
       ["#","Realme"],["Realme C71","Realme C71"],["Realme Note 70","Realme Note 70"],
       ["#","Samsung e Motorola"],["Samsung A07","Samsung A07"],["Samsung A17","Samsung A17"],["Motorola G15","Motorola G15"],
-      ["#","Hotway e Apple"],["Hotway A17","Hotway A17"],["iPhone","iPhone (toda a linha)"],
-      ["Ainda não sei","Ainda não sei, me ajuda a escolher","","wide"]]},
-    pagamento:{t:"Como quer pagar?", o:[["Boleto parcelado","Boleto parcelado","Sem cartão de crédito"],["Cartão de crédito","Cartão de crédito",""],["À vista ou Pix","À vista ou Pix",""]], one:true},
-    regiao:{t:"Onde você mora?", o:[["Ouro Verde","Ouro Verde",""],["Jardim das Bandeiras","Jd. das Bandeiras",""],["Campo Grande","Campo Grande",""],["Outro bairro de Campinas","Outro bairro",""],["Hortolândia","Hortolândia",""],["Sumaré","Sumaré",""],["Monte Mor","Monte Mor",""],["Outra cidade","Outra cidade",""]]}
+      ["#","Hotway e Apple"],["Hotway A17","Hotway A17"],["iPhone","iPhone (toda a linha)"]]}
   };
-  const FLUXO = ["interesse","pagamento","regiao","contato"];
-  const st = {interesse:"",pagamento:"",regiao:"",perfil:""};
+  const FLUXO = NEX.leadEndpoint ? ["pagamento","interesse","contato"] : ["pagamento","interesse"];
+  const TOTAL = 3;
+  const st = {interesse:"",pagamento:"",perfil:""};
   let fi = 0, started = false;
   const pre = ()=> st.pagamento==="Boleto parcelado";
+  const PAGA = {"Cartão de crédito":"cartão de crédito","À vista ou Pix":"Pix ou à vista"};
+  const procura = ()=> st.interesse==="Ainda não sei" ? "Ainda não escolhi o modelo" : "Procuro " + st.interesse;
+  const mensagem = (nome)=>{
+    if(pre()) return (nome ? "Oi! Sou " + nome + " e quero" : "Oi! Quero") + " fazer minha pré-análise grátis. " + procura() + " e quero pagar no boleto.";
+    const fim = procura() + " e prefiro pagar com " + (PAGA[st.pagamento] || st.pagamento.toLowerCase()) + ".";
+    if(aberta) return "Oi! " + (nome ? "Sou " + nome + ". " : "") + "Vim pelo site da Nex Phone. " + fim;
+    return (nome ? "Oi! Sou " + nome + " e quero" : "Oi! Quero") + " ser avisado(a) da inauguração da Nex Phone. " + fim;
+  };
+  const mostrarFinal = (nome, enviado)=>{
+    const p = pre(), primeiro = nome ? esc(nome.split(" ")[0]) : "";
+    let html = '<div class="fbig">' + (primeiro ? "Falta só 1 toque, " + primeiro + "!" : "Falta só 1 toque!") + '</div>';
+    html += '<div class="recap">' + [st.pagamento, st.interesse].filter(Boolean).map(x=>"<span>"+esc(x)+"</span>").join("") + '</div>';
+    if(p){
+      html += '<div class="stepper"><div class="done"><i>✓</i><span>Celular e pagamento escolhidos</span></div><div class="now"><i>2</i><span><strong>Envie a mensagem no WhatsApp</strong></span></div><div><i>3</i><span>Pré-aprovado? Vem buscar</span></div></div>';
+    } else {
+      html += '<p>' + (aberta ? "Envie a mensagem e a equipe te atende no WhatsApp." : "Envie a mensagem e a gente te avisa a data da inauguração e as ofertas.") + '</p>';
+    }
+    if(NEX.whatsapp){
+      html += '<a class="btn btn-dark btn-block" target="_blank" rel="noopener"' + (NEX.leadEndpoint ? '' : ' data-lead="' + (p ? "Pre-analise" : "Lista VIP") + '"') + ' href="' + waLink(mensagem(nome)) + '"><svg aria-hidden="true"><use href="#wa"/></svg>' + (p ? "Enviar no WhatsApp" : aberta ? "Falar com a Nex Phone" : "Quero ser avisado") + '</a>';
+      html += '<p class="fsafe">A mensagem já vai pronta. É só tocar em enviar.</p>';
+    }
+    if(!enviado && NEX.leadEndpoint){
+      html += '<p class="warn">Não conseguimos registrar agora. Toque no botão acima pra falar direto com a gente.</p>';
+    }
+    html += '<button type="button" class="fback" id="fagain">‹ Trocar escolha</button>';
+    if(!aberta) html += '<p class="fsafe">Seguindo a <a href="https://www.instagram.com/nexfonecampinas/" target="_blank" rel="noopener">@nexfonecampinas</a>, você ganha R$ 50 OFF na inauguração.</p>';
+    window.__nexEnviado = true; $("#mbar").hidden = true;
+    const ok = $("#okBox"); ok.innerHTML = html; ok.hidden = false; $("#funnel").hidden = true;
+    $("#fagain").addEventListener("click",()=>{ fi = 0; window.__nexEnviado = false; renderFunnel(true); });
+    ok.setAttribute("tabindex","-1"); ok.focus({preventScroll:true});
+    $("#leadForm").scrollIntoView({block:"start", behavior: reduce ? "auto" : "smooth"});
+  };
   const renderFunnel = (focus)=>{
+    if(fi >= FLUXO.length){ mostrarFinal("", false); return; }
     const k = FLUXO[fi];
-    $("#fcount").textContent = "Passo " + (fi+1) + " de " + FLUXO.length;
-    $("#fbar").style.width = Math.round((fi/(FLUXO.length-1))*100) + "%";
+    $("#funnel").hidden = false; $("#okBox").hidden = true;
+    $("#fcount").textContent = "Passo " + (fi+1) + " de " + TOTAL;
+    $("#fbar").style.width = Math.round(((fi+1)/TOTAL)*100) + "%";
     $("#fback").hidden = fi===0;
     const taps = $("#ftaps"), contact = $("#fcontact");
     if(k==="contato"){
-      $("#ftitle").textContent = pre() ? "Pra onde a gente manda sua resposta?" : "Pra onde a gente manda o preço de inauguração?";
+      $("#ftitle").textContent = pre() ? "Pra onde a gente manda sua resposta?" : aberta ? "Qual o seu WhatsApp?" : "Pra onde a gente manda a data da inauguração?";
       taps.hidden = true; taps.innerHTML = ""; contact.hidden = false;
-      $("#recap").innerHTML = [st.interesse, st.pagamento, st.regiao].filter(Boolean).map(x=>"<span>"+esc(x)+"</span>").join("");
-      $("#submitBtn").textContent = pre() ? "Quero minha pré-análise" : "Quero o preço de inauguração";
+      $("#recap").innerHTML = [st.pagamento, st.interesse].filter(Boolean).map(x=>"<span>"+esc(x)+"</span>").join("");
+      $("#submitBtn").disabled = false;
+      $("#submitBtn").textContent = pre() ? "Quero minha pré-análise" : aberta ? "Falar com a Nex Phone" : "Quero ser avisado";
       if(focus) $("#nome").focus();
     } else {
       const q = OPC[k];
@@ -672,7 +723,7 @@ const NEX = {
         $$(".tap",taps).forEach(x=>x.setAttribute("aria-pressed", x===b ? "true" : "false"));
         setTimeout(()=>{ fi++; renderFunnel(true); }, reduce ? 0 : 160);
       }));
-      if(focus) $("#ftitle").focus();
+      if(focus) $("#ftitle").focus({preventScroll:true});
     }
   };
   $("#fback").addEventListener("click",()=>{ if(fi>0){ fi--; renderFunnel(true); } });
@@ -709,7 +760,7 @@ const NEX = {
 
     const lead = Object.assign({
       nome: nome.slice(0,60), whatsapp: "55"+dig, interesse: st.interesse, pagamento: st.pagamento,
-      quer_pre_analise: pre(), regiao: st.regiao, perfil: st.perfil,
+      quer_pre_analise: pre(), regiao: "", perfil: st.perfil,
       aceita_ofertas: $("#optin").checked, consentimento: true, versao_termo: NEX.versaoTermo, website: ""
     }, origem);
 
@@ -723,34 +774,9 @@ const NEX = {
       }catch(e){ enviado = false; }
     }
     if(enviado) track("Lead",{content_name: lead.quer_pre_analise ? "Pre-analise" : "Lista VIP"});
-
-    const primeiro = esc(nome.split(" ")[0]);
-    const msg = lead.quer_pre_analise
-      ? "Oi! Sou " + nome + " e quero fazer minha pré-análise grátis. Procuro " + lead.interesse + " e quero pagar no boleto."
-      : "Oi! Sou " + nome + " e quero o preço de inauguração. Procuro " + lead.interesse + " e prefiro pagar com " + lead.pagamento.toLowerCase() + ".";
-    let html = '<div class="fbig">' + (lead.quer_pre_analise ? "Falta só 1 passo, " + primeiro + "!" : "Pronto, " + primeiro + "!") + '</div>';
-    if(lead.quer_pre_analise){
-      html += '<div class="stepper"><div class="done"><i>✓</i><span>Cadastro feito</span></div><div class="now"><i>2</i><span><strong>' + (NEX.whatsapp ? "Mande a mensagem no WhatsApp" : "A gente te chama no WhatsApp") + '</strong></span></div><div><i>3</i><span>Pré-aprovado? Vem buscar</span></div></div>';
-    } else if(enviado){
-      html += '<p>A gente te manda o preço de inauguração no WhatsApp.</p>';
-    }
-    if(NEX.whatsapp){
-      html += '<a class="btn btn-dark btn-block" target="_blank" rel="noopener" href="' + waLink(msg) + '"><svg aria-hidden="true"><use href="#wa"/></svg>' + (lead.quer_pre_analise ? "Começar minha pré-análise" : "Falar com a Nex Phone") + '</a>';
-      if(lead.quer_pre_analise) html += '<p class="fsafe">A mensagem já vai pronta. É só tocar em enviar.</p>';
-    } else if(enviado && lead.quer_pre_analise){
-      html += '<p>A gente te chama em até 24 horas.</p>';
-    }
-    if(!enviado && NEX.leadEndpoint){
-      html += '<p class="warn">Não conseguimos registrar agora. ' + (NEX.whatsapp ? "Toque no botão acima pra falar direto com a gente." : "Tente de novo em alguns minutos.") + '</p>';
-    }
-    if(!NEX.leadEndpoint && !NEX.whatsapp){
-      html += '<p class="warn">Prévia: este cadastro não foi enviado, porque a planilha de leads e o WhatsApp ainda não foram configurados. Nenhum dado foi guardado.</p>';
-    }
-    html += '<p class="fsafe">Seguindo a <a href="https://www.instagram.com/nexfonecampinas/" target="_blank" rel="noopener">@nexfonecampinas</a>, você ganha R$ 50 OFF na inauguração.</p>';
-    window.__nexEnviado = true; $("#mbar").hidden = true;
-    const ok = $("#okBox"); ok.innerHTML = html; ok.hidden = false; $("#funnel").hidden = true;
-    form.reset(); ok.setAttribute("tabindex","-1"); ok.focus();
-    form.scrollIntoView({block:"start", behavior: reduce ? "auto" : "smooth"});
+    form.reset();
+    fi = FLUXO.length;
+    mostrarFinal(nome, enviado);
   });
 
   /* --- Tela de pré-aprovado (link #pre-aprovado enviado no WhatsApp) --- */
