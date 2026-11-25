@@ -301,7 +301,7 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MobilePhoneStore","name":"Nex Phone","url":"https://nexphonecelulares.com.br/","telephone":"+55 19 99757-3728","email":"nexxphone@gmail.com","image":"https://nexphonecelulares.com.br/og-image.jpg","logo":"https://nexphonecelulares.com.br/icon-512.png","slogan":"Conectando você ao futuro","description":"Celulares Redmi, Poco, Realme, Samsung, Motorola, Hotway e iPhone no boleto sem cartão (sujeito a análise de crédito). Pré-análise grátis pelo WhatsApp.","address":{"@type":"PostalAddress","streetAddress":"Av. John Boyd Dunlop, 3900 – Shopping Parque das Bandeiras, Piso L3, Loja 3073","addressLocality":"Campinas","addressRegion":"SP","postalCode":"13060-904","addressCountry":"BR"},"paymentAccepted":"Débito, Crédito, Pix, Aproximação (NFC), Dinheiro, Boleto parcelado","areaServed":["Campinas","Hortolândia","Sumaré","Monte Mor"],"sameAs":["https://www.instagram.com/nexfonecampinas/"]}
+{"@context":"https://schema.org","@type":"MobilePhoneStore","name":"Nex Phone","url":"https://nexphonecelulares.com.br/","telephone":"+55 19 99757-3728","email":"nexxphone@gmail.com","image":"https://nexphonecelulares.com.br/og-image.jpg","logo":"https://nexphonecelulares.com.br/icon-512.png","slogan":"Conectando você ao futuro","description":"Celulares Redmi, Poco, Realme, Samsung, Motorola, Hotway e iPhone no boleto sem cartão (sujeito a análise de crédito). Pré-análise grátis pelo WhatsApp.","address":{"@type":"PostalAddress","streetAddress":"Av. John Boyd Dunlop, 3900 – Shopping Parque das Bandeiras, Piso L3, Loja 3073","addressLocality":"Campinas","addressRegion":"SP","postalCode":"13060-904","addressCountry":"BR"},"paymentAccepted":"Débito, Crédito, Pix, Aproximação (NFC), Dinheiro, Boleto parcelado","areaServed":["Campinas","Hortolândia","Sumaré","Monte Mor"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}],"sameAs":["https://www.instagram.com/nexfonecampinas/"]}
 </script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -567,8 +567,9 @@ footer .wrap{padding-block:40px 28px;display:grid;gap:22px}
 const NEX = {
   whatsapp: "5519997573728",
   leadEndpoint: "",        // URL do App da Web do Google Apps Script (planilha de leads)
-  inauguracao: "",         // nova data e hora, quando for definida. Ex.: "2026-11-20T10:00:00-03:00". Vazio = "Inauguração em breve"
-  lojaAberta: false,       // mudar para true só no dia em que a loja abrir de verdade (mostra horário e "Loja aberta")
+  inauguracao: "2026-11-25T10:00:00-03:00", // data da inauguração (25/11/2026). No próprio dia o topo mostra "Inauguração é hoje!"
+  blackAte: "2026-11-30T23:59:59-03:00",     // fim da Black de inauguração. Vazio = sem faixa de Black
+  lojaAberta: true,        // mudar para true só no dia em que a loja abrir de verdade (mostra horário e "Loja aberta")
   parcelasBoleto: "",      // ex.: "18x" (confirmar com as financeiras)
   validadePreAprovacao: "Consultar com vendedor",
   documentos: [            // o que levar na loja (confirmar com as financeiras)
@@ -638,6 +639,24 @@ const NEX = {
     $("#hoursNote").hidden = true;
     $("#faqAbre").textContent = "Já estamos abertos! " + HORARIO;
     $("#faqPreco").textContent = "Chame a gente no WhatsApp ou venha na loja: a equipe passa os preços e as condições.";
+    /* Dia da inauguração e semana da Black de inauguração */
+    const agora = new Date();
+    const diaSP = dt=>dt.toLocaleDateString("pt-BR",{timeZone:"America/Sao_Paulo"});
+    const hojeInaug = alvo && !isNaN(alvo) && diaSP(alvo) === diaSP(agora);
+    const fimBlack = NEX.blackAte ? new Date(NEX.blackAte) : null;
+    const naBlack = fimBlack && !isNaN(fimBlack) && agora <= fimBlack;
+    const ateTxt = naBlack ? fimBlack.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit",timeZone:"America/Sao_Paulo"}) : "";
+    if(hojeInaug){
+      $("#heroChip").textContent = "Inauguração é hoje!";
+      $("#heroSub").innerHTML = 'A Nex Phone abriu as portas! ' + (naBlack ? 'Black de inauguração até ' + ateTxt + ': o preço a gente revela só na loja. ' : '') + 'Faça sua <b class="nw">pré-análise</b> pelo WhatsApp e venha buscar.';
+    } else if(naBlack){
+      $("#heroChip").textContent = "Loja aberta · Black até " + ateTxt;
+      $("#heroSub").innerHTML = 'Black de inauguração até ' + ateTxt + ': o preço a gente revela só na loja. Faça sua <b class="nw">pré-análise</b> pelo WhatsApp e venha buscar.';
+    }
+    if(naBlack) $("#faqPreco").textContent = "Na Black de inauguração (até " + ateTxt + "), o preço a gente revela só na loja. Venha conferir ou chame no WhatsApp.";
+    if(hojeInaug) $("#faqAbre").textContent = "Hoje! A inauguração é hoje, no Shopping Parque das Bandeiras, Piso L3, ao lado da Magalu. " + HORARIO;
+    const vipP = $("#vip p"); if(vipP) vipP.textContent = "Quem seguiu @nexfonecampinas até a véspera da inauguração ganha o desconto: é só mostrar no caixa.";
+    const apVip = $(".ap-vip p"); if(apVip) apVip.textContent = "Para quem seguiu @nexfonecampinas até a véspera da inauguração. 1 cupom por CPF, não cumulativo.";
   } else if(temData){
     const dataTxt = alvo.toLocaleDateString("pt-BR",{day:"numeric",month:"long"});
     const horaTxt = alvo.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}).replace(":00","h").replace(":","h");
